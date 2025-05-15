@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+  
+  /* Estilo del contenedor principal */
+  .form-containerr {
+    position: relative;
+    width: 500 px;
+    background: #000;
+    box-shadow: 0 0 50px 5;
+    border-radius: 20px;
+    padding: 40px;
+    overflow: hidden;
+    margin: 0 auto;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  
+  /* Estilo para el título */
+  .form-containerr h1 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para los párrafos generados por form.as_p */
+  .form-containerr form p {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+  }
+  
+  /* Estilo para las etiquetas */
+  .form-containerr form p label {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilo para los inputs */
+  .form-containerr form p input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  /* Estilo para el botón */
+  .form-containerr button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: rgb(40, 61, 42);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+  }
+  
+  /* Estilo para mensajes de error */
+  .form-containerr .errorlist, 
+  .form-containerr .error {
+    color: #ff3860;
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+  }
+  
+  /* Estilo para la variable de error de Django */
+  .form-containerr > .error {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #ff3860;
+  } 
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 115vh;
+    background: #000;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+  }
+  
+  /* Estilo para el título dentro del bloque de contenido */
+  body h1 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para el formulario */
+  body form {
+    position: relative;
+    width: 400px;
+    box-shadow: 0 0 50px rgb(4, 61, 42);
+    border-radius: 20px;
+    padding: 20px;
+    overflow: hidden;
+  }
+  
+ 
+  
+  /* Resto de estilos aplicados al cuerpo del documento */
+  body form p {
+    position: relative;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+  }
+  
+  body form p label {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  body form p input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  body form p .helptext {
+    display: block;
+    color: #c8c8c8e6;
+    font-size: 10px;
+    margin-top: -5px;
+  }
+  
+  body form button {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: rgb(113, 59, 59);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    font-size: 10px;
+    color: #000;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+  }
+  
+  body .errorlist, 
+  body .error {
+    color: #ff3860;
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+  }
+  
+  body .error {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  body form p input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin-right: 10px;
+    accent-color: #0ef;
+  }
+  
+  body form p select {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 5px;
+    background: #000;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+  }
+  
+  body form p select option {
+    background: #000;
+    color: #fff;
+  }

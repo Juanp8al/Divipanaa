@@ -1,0 +1,133 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #57a66a; /* Verde más suave */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px;
+  gap: 50px;
+}
+
+/* Barra lateral */
+.sidebar {
+  width: 250px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.expense-section, .invite-section {
+  margin-bottom: 30px;
+}
+
+.invite-section input {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.invite-button, .social-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #57a66a; /* Verde más suave */
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  background-color: #111;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.expense-button, .settle-button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.expense-button {
+  background-color: #57a66a; /* Verde más suave */
+}
+
+.settle-button {
+  background-color: #4CAF50; /* Verde un poco más oscuro */
+}
+
+/* Pagos pendientes */
+.dashboard-summary {
+  text-align: center;
+  padding: 25px;
+  background-color: #222;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.pending-payments {
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 80%;
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.welcome-content {
+  max-width: 50%;
+}
+
+.welcome-image img {
+  max-width: 130px;
+}
+
+.add-friends-button {
+  background-color: #57a66a; /* Verde más suave */
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+

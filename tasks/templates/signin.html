@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="form-containerr">
+  <h1>Inicia Sesión</h1>
+  {{error}}
+  <form action="/signin/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>sign in</button>
+  </form>
+</div>
+{% endblock %}

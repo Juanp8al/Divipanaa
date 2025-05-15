@@ -1,0 +1,140 @@
+/* Mobile */
+@media screen and (max-width: 428px) {
+  section {
+    height: auto;
+    padding: 50px 0
+  }
+  .wrapper-container {
+    height: auto;
+  }
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .brand-title {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  .landing-container h3 {
+    font-size: 1.2rem;
+    letter-spacing: 20px;
+  }
+  .landing-container h1 {
+    font-size: 4rem;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 1;
+  }
+  .landing-container {
+    padding: 50px 0;
+  }
+  .landing-img {
+    width: 100%;
+    margin-top: 20px;
+    z-index: 1;
+  }
+  .hero-btn {
+    margin-top: 50px;
+  }
+
+  .dual-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 50px;
+    padding: 50px 5% ;
+  }
+  .feature-image {
+    width: 10%;
+  }
+  .main-heading {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* Tab */
+@media screen and (min-width: 429px) and (max-width: 1279px) {
+  section {
+    height: auto;
+    padding: 50px 0
+  }
+  .wrapper-container {
+    height: auto;
+  }
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .brand-title {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  .landing-container h3 {
+    font-size: 1.8rem;
+    letter-spacing: 25px;
+    margin-top: 30px;
+  }
+  .landing-container h1 {
+    font-size: 6rem;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 1;
+  }
+  .landing-container {
+    padding: 50px 0;
+  }
+  .landing-img {
+    width: 100%;
+    margin-top: 50px;
+    z-index: 1;
+  }
+  .hero-btn {
+    margin-top: 50px;
+    font-size: 22px;
+  }
+
+  .dual-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 50px;
+    padding: 50px 5% ;
+  }
+  .feature-image {
+    width: 100%;
+  }
+  .main-heading {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* lap */
+@media screen and (min-width: 1280px) and (max-width: 1919px) {
+  .brand-title {
+    font-size: 28px;
+  }
+  .landing-container h3{
+    font-size: 1.7rem;
+  }
+  .landing-container h1 {
+    font-size: 6rem;
+    letter-spacing: 20px;
+  }
+  .landing-img {
+    width: 50%;
+  }
+  .hero-btn {
+    margin-top: -120px;
+  }
+
+  .main-heading {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+  }
+}

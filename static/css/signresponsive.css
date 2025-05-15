@@ -1,0 +1,56 @@
+/* Mobile */
+@media screen and (max-width: 428px) {
+    .section-box {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    input {
+      width: 100%;
+      font-size: 16px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  
+  /* Tablet */
+  @media screen and (min-width: 429px) and (max-width: 1279px) {
+    .section-box {
+      width: 60%;
+      padding: 30px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    input {
+      width: 90%;
+    }
+  
+    button {
+      width: 90%;
+    }
+  }
+  
+  /* Laptop */
+  @media screen and (min-width: 1280px) {
+    .section-box {
+      width: 40%;
+    }
+  
+    input {
+      width: 80%;
+    }
+  
+    button {
+      width: 80%;
+    }
+  }
+  

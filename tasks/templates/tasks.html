@@ -1,0 +1,714 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="split-container">
+  <!-- Barra lateral -->
+  <aside class="split-sidebar">
+    <h2 class="sidebar-title">
+      <span class="divi-green">DIVI</span><span class="pana-white">PANA</span>
+    </h2>
+
+    <div class="sidebar-section">
+      <h4>Grupos / Sesiones</h4>
+      {% for p in participaciones %}
+        <p>🧾 Sesión #{{ p.sesion.id }} - {{ p.sesion.estado }}</p>
+      {% empty %}
+        <p class="info-text">No estás en ninguna sesión aún.</p>
+      {% endfor %}
+    </div>
+
+    <div class="sidebar-section botones-laterales" style="margin-top: 20px;">
+      <a href="{% url 'todos_gastos' %}" class="boton-raise">🧾 Todos los gastos</a>
+    </div>
+  </aside>
+  <!-- ✅ Botones debajo del aside, pero dentro del mismo split-container -->
+  <div class="split-sidebar1">
+    <a href="#" class="cta" onclick="toggleForm()">
+      <span>➕ Añadir un gasto</span>
+      <svg width="13px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </a>
+    <a href="{% url 'liquidar_deudas' %}" class="cta">
+      <span>💸 Liquidar deudas</span>
+      <svg width="13px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </a>
+  </div>
+  <!-- Panel principal -->
+  <main class="split-main">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert-exito">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+
+    <!-- Formulario para añadir gasto -->
+    <div id="form-gasto" style="display:none; margin-bottom: 30px;">
+      <form method="POST" action="{% url 'crear_gasto' %}">
+        {% csrf_token %}
+        <label>Descripción:</label>
+        <input type="text" name="descripcion" required>
+        <label>Monto:</label>
+        <input type="number" step="0.01" name="monto" required>
+        <br><br>
+        <button class="btn-orange" type="submit" >💾 Guardar Gasto</button>
+        <button class="btn-grey" type="button" onclick="toggleForm()">Cancelar</button>
+      </form>
+    </div>
+    
+    <aside class="split-main">
+    {% if gastos %}
+      <!-- Lista de gastos (solo si hay) -->
+      <section class="gastos-lista">
+        <div class="gastos-card">
+          <h3 class="gastos-title">🧾 Gastos registrados:</h3>
+          <ul class="gastos-items">
+            {% for gasto in gastos %}
+            <li class="gasto-item" id="gasto-{{ gasto.id }}">
+              <div class="gasto-info">
+                <strong>{{ gasto.descripcion }}</strong>
+                <span class="monto">— ${{ gasto.monto }}</span>
+                <span class="fecha">({{ gasto.fecha|date:"d M, H:i" }})</span>
+              </div>
+              <div class="delete-form">
+                <button type="button" class="btn-delete" onclick="eliminarGasto('{{ gasto.id }}')" title="Eliminar">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0v-6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0v-6zm2 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0v-6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1 0-2h3.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1H14a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3a.5.5 0 0 0 0 1H13.5a.5.5 0 0 0 0-1H2.5z"/>
+                  </svg>
+                </button>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+
+          <div class="gastos-total">
+            <strong>Total de gastos:</strong>
+            <span class="monto">${{ total_gastos }}</span>
+          </div>
+
+          <form method="POST" action="{% url 'eliminar_todos_gastos_usuario' %}" style="margin-top: 15px;">
+            {% csrf_token %}
+            <button class="btn-delete close" type="submit" onclick="return confirm('¿Estás seguro de eliminar todos tus gastos?')">
+              🗑️ Eliminar todos los gastos
+            </button>
+          </form>
+
+        </div>
+      </section>
+    {% else %}
+      <!-- Bienvenida (solo si no hay gastos) -->
+      <section class="split-welcome">
+        <div class="welcome-content">
+          <div class="welcome-image">
+            <img src="{% static 'images/dinero1.png' %}" alt="logo" class="welcome-img">
+          </div>
+          <div class="welcome-text">
+            <h2>¡Te damos la bienvenida a DiviPanas!</h2>
+            <p>DiviPanas te ayuda a dividir los gastos con tus amigos fácilmente.</p>
+            <p>Haz clic en "Añadir un gasto" arriba o invita a tus amigos primero.</p>
+            <a href="{% url 'amigos' %}" class="btn-orange">➕ Añadir amigos en DiviPanas</a>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+    </aside>
+  </main>
+</div>
+
+
+<style>
+
+  body {
+  padding-top: 80px;
+}
+.cta {
+  position: relative;
+  padding: 16px 40px;
+  min-width: 220px;
+  border-radius: 28px;
+  text-decoration: none !important;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: #1b5328;
+  width: 60px;
+  height: 56px;
+  transition: all 0.3s ease;
+  z-index: 0;
+}
+.cta span {
+  position: relative;
+  z-index: 1;
+  text-decoration: none !important;
+}
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: white;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+.cta:hover:before {
+  width: 100%;
+  background: #2f8d45;
+}
+.cta:hover svg {
+  transform: translateX(0);
+}
+.cta:active {
+  transform: scale(0.96);
+}
+nav {
+  height: 100px; /* Más alto como en la portada */
+  padding: 0 60px; /* Espaciado horizontal más amplio */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.split-container {
+  display: flex;
+  font-family: 'Arial', sans-serif;
+  background-color: #1c1c1c;
+  padding-top: 100px; /* Empuja todo hacia abajo desde el navbar */
+  position: relative;
+  z-index: 1;
+  border: 2px solid white;   /* 👈 Marco blanco alrededor del área gris */
+  border-radius: 12px;
+  max-width: 1200px;          /* Limita el ancho para centrar mejor */
+  box-sizing: border-box;
+  padding: 40px;
+  margin: 20px auto;
+  overflow: hidden;
+
+}
+
+/* ==================== SIDEBAR ==================== */
+.split-sidebar {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    width: 250px;
+    background-color: #1c1c1c;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+    border-radius: 12px;
+    height: fit-content;
+}
+
+.sidebar-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.ul-links {
+  position: fixed;
+  top: 160px;   /* ajusta si lo quieres más arriba o abajo */
+  left: 60px;   /* ajusta si lo quieres más a la izquierda */
+  z-index: 9999;
+}
+.nav-links {
+  position: fixed;
+  top: 170px;        
+  left: 170px;        
+  width: 170px;      
+  margin: 0;
+  z-index: 1000;    
+}
+
+
+/* ==================== BOTONES DE MENÚ ==================== */
+.nav-links li {
+  margin: 12px 0;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-links li:hover {
+  background-color: #1c1c1c;
+  color: #28a745;
+}
+
+.nav-links li i {
+  width: 20px;
+  text-align: center;
+}
+.split-sidebar,
+.split-sidebar h2,
+.split-sidebar h4,
+.split-sidebar p,
+.split-sidebar label,
+.split-sidebar input,
+.split-sidebar button {
+  color: white !important;
+}
+
+
+  .info-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+  }
+
+  /* ==================== MAIN ==================== */
+  .split-main {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: #1c1c1c; 
+    color: white;
+    min-height: 100vh;
+    margin-top: 0;
+    padding-top: 0;
+    overflow: visible;
+    gap: 0px;
+    transform: translateX(-100px);
+  }
+
+  .split-header {
+  display: flex;
+  transform: translateY(-4px);  
+  position: relative;            
+  z-index: 5;                    
+}
+
+  /* ==================== BOTONES ==================== */
+  .btn-orange {
+    background-color: #1b5328;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+.boton-raise {
+  --color: #ffffff;
+  --hover: #e5ff60;
+  background: none;
+  border: 2px solid var(--color);
+  color: var(--color);
+  font: inherit;
+  line-height: 1;
+  padding: 0.7em 1.5em;
+  margin: 0.4em 0;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: 0.25s;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.boton-raise:hover,
+.boton-raise:focus {
+  border-color: var(--hover);
+  color: white;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+  background-color: transparent;
+}
+
+
+  .btn-grey {
+    background-color: #ddd;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* ==================== BIENVENIDA ==================== */
+  .split-welcome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border: 2px dashed #444;
+    border-radius: 8px;
+    background-color: #111111;
+    text-align: left;
+    margin-top: 18px; 
+    margin-left: 100px; 
+    margin-bottom: -10px;
+    padding-bottom: 10px;
+    gap: 20px;
+    position: sticky;
+    height: fit-content;
+    align-self: flex-start;
+  }
+
+
+  .welcome-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1000px;
+  }
+
+  .welcome-image img,
+  .welcome-img {
+    width: 200px;
+    height: auto;
+  }
+
+  .welcome-text h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  .welcome-text p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ccc;
+  }
+
+  /* ==================== FORMULARIO DE GASTOS ==================== */
+  input, select {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  #form-gasto {
+    background-color: transparent;
+    padding: 30px 40px;
+    max-width: 500px;
+    font-size: 16px;
+    margin-left: auto;     
+    margin-right: 40px;
+    transform: translateX(-120px);
+  }
+
+  #form-gasto label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  #form-gasto input {
+    width: 100%;
+    background-color: #d3d3d3;
+    color: #333;
+    border: 1px solid #1b5328;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+
+  
+  #form-gasto button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  /* ==================== TARJETA DE GASTOS ==================== */
+  .gastos-lista {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  margin-top: 10px;
+  padding-top: 0;
+  /* ELIMINA estas si las tienes */
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+  .gastos-card {
+    background-color: #9b9b9a;
+    padding: 25px 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .gastos-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #000;
+  }
+
+  .gastos-items {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .gastos-items li {
+    padding: 6px 0;
+    font-size: 16px;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .gastos-items li strong {
+    background-color: #b3ceff;
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .gastos-items .fecha {
+    font-size: 13px;
+    color: #666;
+    margin-left: 8px;
+  }
+
+  .gastos-total {
+    text-align: right;
+    font-weight: bold;
+    font-size: 17px;
+    background-color: #9b9b9a;
+    color: #000;
+    padding: 6px 10px;
+    display: inline-block;
+    border-radius: 4px;
+  }
+
+  .gastos-total strong {
+    color: #000000;
+  }
+
+  /* ==================== BOTÓN DE ELIMINAR GASTO ==================== */
+  .gasto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .gasto-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .delete-form {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-delete {
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .btn-delete:hover {
+    background-color: #00dd34;
+    color: #ffffff;
+    transform: scale(1.1);
+  }
+
+  .btn-delete svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  .btn-delete svg:hover {
+    fill: red;
+  }
+
+
+  /* 🔧 ELIMINA cualquier fondo negro por error */
+  .gasto-item,
+  .delete-form,
+  .btn-delete,
+  .btn-delete svg {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  .monto {
+  color: #000;
+}
+.divi-green {
+  color: #28a745; /* verde neón o ajusta según tu preferencia */
+  font-weight: bold;
+}
+
+.pana-white {
+  color: white;
+  font-weight: bold;
+}
+
+.alert-exito {
+  background-color: #1b5328;
+  color: white;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.split-container {
+  display: flex;
+  gap: 40px;
+}
+
+.sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.split-sidebar1 {
+  position: sticky;
+  top: 320px;
+  transform: translateX(-270px);
+  width: 100px;
+  color: white;
+  padding: 20px;
+  height: fit-content;
+}
+
+
+.botones-abajo-sidebar .cta {
+  width: 180px;
+  text-align: center;
+}
+
+/* Estilo base del botón */
+button.close {
+  --color: #ffffff;
+  --hover: #970c0c;
+  color: var(--color);
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  padding: 1em 2em;
+  transition: 0.25s;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* Hover efecto tipo relleno desde los lados */
+button.close:hover,
+button.close:focus {
+  color: #970c0c;
+  box-shadow:
+    inset -3.5em 0 0 0 var(--hover),
+    inset 3.5em 0 0 0 var(--hover);
+  border-color: var(--hover);
+}
+
+</style>
+
+
+<script>
+  function toggleForm() {
+    const form = document.getElementById("form-gasto");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+  }
+
+  function eliminarGasto(id) {
+    fetch(`/gasto/eliminar/${id}/`, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': getCSRFToken()
+      }
+    }).then(response => {
+      if (response.ok) {
+        const item = document.getElementById(`gasto-${id}`);
+        if (item) item.remove();
+      } else {
+        alert('No se pudo eliminar el gasto.');
+      }
+    });
+  }
+
+  function getCSRFToken() {
+    const name = 'csrftoken';
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const c = cookies[i].trim();
+      if (c.startsWith(name + '=')) {
+        return c.substring(name.length + 1);
+      }
+    }
+    return '';
+  }
+</script>
+
+{% endblock %}

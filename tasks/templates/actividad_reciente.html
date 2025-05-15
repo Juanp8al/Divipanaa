@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div style="padding: 100px;">
+    <h2>🕒 Actividad Reciente</h2>
+    <ul>
+      {% for gasto in gastos %}
+        <li>{{ gasto.fecha|date:"d M H:i" }} — {{ gasto.descripcion }}: ${{ gasto.monto }}</li>
+      {% empty %}
+        <li>No hay movimientos recientes.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

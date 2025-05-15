@@ -1,0 +1,177 @@
+/* ===== Estilos responsivos generales ===== */
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  /* Ajuste de la vista DIVIPANA */
+  .dual-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 40px 5%;
+    gap: 40px;
+  }
+
+  section, 
+  .wrapper-container {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .main-heading, .main-heading2, .main-heading3, .main-heading4 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .subtitle-marker, .subtitle-marker2, .subtitle-marker3, .subtitle-marker4 {
+    font-size: 1.3rem;
+    top: 0;
+  }
+
+  .column-primary,
+  .column-secondary,
+  .column-primary2, .column-secondary2,
+  .column-primary3, .column-secondary3,
+  .column-primary4, .column-secondary4 {
+    width: 100%;
+    top: 0 !important;
+    position: static;
+  }
+
+  .column-secondary, .column-secondary2, 
+  .column-secondary3, .column-secondary4 {
+    align-items: center;
+  }
+
+  .feature-image,
+  .feature-image2,
+  .feature-image4 {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  .header-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .invite-box input {
+    padding: 8px;
+  }
+
+  .invite-btn, .share-btn, .tweet-btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .dual-layout {
+    padding: 30px 4%;
+    gap: 30px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-left {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .nav-left li {
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .button-container-1 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .user-menu {
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .user-button {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    right: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-buttons button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .invite-box input {
+    font-size: 14px;
+  }
+
+  .add-friend {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .main-heading, .main-heading2, .main-heading3, .main-heading4 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle-marker, .subtitle-marker2, .subtitle-marker3, .subtitle-marker4 {
+    font-size: 1.1rem;
+  }
+
+  .landing-container h1 {
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+  }
+
+  .landing-container h3 {
+  overflow-wrap: break-word;
+  white-space: normal;
+  word-break: break-word;
+}
+}

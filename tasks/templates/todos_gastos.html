@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="split-container">
+  <main class="split-main">
+    <h2 style="margin-bottom: 30px;">📋 Todos los gastos registrados</h2>
+
+    <section class="gastos-lista">
+      <div class="gastos-card">
+        <h3 class="gastos-title">🧾 Lista completa de gastos:</h3>
+        <ul class="gastos-items">
+          {% for gasto in gastos %}
+            <li class="gasto-item">
+              <div class="gasto-info">
+                <strong>{{ gasto.descripcion }}</strong>
+                <span class="monto">— ${{ gasto.monto }}</span>
+                <span class="fecha">({{ gasto.fecha|date:"d M, H:i" }})</span>
+              </div>
+            </li>
+          {% empty %}
+            <li>No hay gastos registrados.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <div style="margin-top: 20px;">
+      <a href="{% url 'dashboard' %}" class="btn-orange">⬅️ Volver al panel</a>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
