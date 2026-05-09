@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista previa - Gestion de Riesgos</title>
+<style>
+body{font-family:Arial,sans-serif;margin:24px;background:#f7f9fc;color:#1f2937;} h1{margin:0 0 8px;} .meta{margin-bottom:20px;color:#374151;} table{border-collapse:collapse;width:100%;background:#fff;} th,td{border:1px solid #d1d5db;padding:8px;vertical-align:top;font-size:12px;} th{position:sticky;top:0;background:#1f4e78;color:#fff;z-index:1;} tr:nth-child(even){background:#f8fafc;} .wrap{overflow:auto;border:1px solid #cbd5e1;background:#fff;max-height:75vh;} .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0 24px;} .card{background:#fff;border:1px solid #cbd5e1;border-radius:8px;padding:12px;} .card strong{display:block;margin-bottom:6px;color:#1f4e78;} .note{margin:12px 0 20px;padding:12px;background:#e8f1fb;border-left:4px solid #1f4e78;} .critica{background:#fbe4e6;font-weight:bold;} .alta{background:#fde9d9;font-weight:bold;} .media{background:#fff2cc;font-weight:bold;} .baja{background:#e2f0d9;font-weight:bold;} </style>
+</head>
+<body>
+<h1>Gestion de Riesgos - Core Bancario</h1>
+<div class="meta">Vista generada desde el archivo Excel con la tabla completa resuelta y los niveles calculados.</div>
+<div class="cards">
+<div class="card"><strong>Proyecto</strong>Migracion y modernizacion de un Core Bancario</div>
+<div class="card"><strong>Clientes activos</strong>500,000</div>
+<div class="card"><strong>Inactividad maxima</strong>30 minutos</div>
+<div class="card"><strong>Plazo objetivo</strong>8 meses</div>
+<div class="card"><strong>Archivo Excel</strong>gestion_riesgos_core_bancario.xlsx</div>
+<div class="card"><strong>Archivo CSV</strong>gestion_riesgos_core_bancario.csv</div>
+<div class="card"><strong>Archivo HTML</strong>gestion_riesgos_core_bancario_preview.html</div>
+</div>
+<div class="note">Abre este archivo HTML para revisar la tabla sin necesidad de Excel. El CSV tambien queda disponible si prefieres una vista tabular simple.</div>
+<div class="wrap"><table><thead><tr>
+<th>ID</th>
+<th>Descripcion del problema</th>
+<th>Riesgo</th>
+<th>Causa raiz</th>
+<th>Fecha de identificacion</th>
+<th>Tipo de riesgo</th>
+<th>Categoria del riesgo</th>
+<th>Objetivo del proyecto afectado</th>
+<th>Tipo de impacto</th>
+<th>Probabilidad</th>
+<th>Impacto Alcance</th>
+<th>Impacto Tiempo</th>
+<th>Impacto Costo</th>
+<th>Impacto Calidad</th>
+<th>Valoracion global del riesgo</th>
+<th>Prioridad</th>
+<th>Dueno (Owner)</th>
+<th>Responsable</th>
+<th>Plan de respuesta predeterminado</th>
+<th>Estrategia de respuesta adoptada</th>
+<th>Plan de respuesta adoptado</th>
+<th>Riesgo residual / secundario</th>
+<th>Riesgo activado?</th>
+<th>Fecha de activacion</th>
+</tr></thead><tbody>
+<tr>
+<td>R1</td>
+<td>Migracion del core en una ventana limitada de corte</td>
+<td>Interrupcion del servicio superior a 30 minutos durante el cutover</td>
+<td>Planificacion deficiente, scripts no probados y tiempos reales subestimados</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Tecnico / Operacional</td>
+<td>Continuidad operativa y disponibilidad</td>
+<td>Directo</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>20</td>
+<td class="critica">Critica</td>
+<td>Lider de Migracion</td>
+<td>Operaciones + Infraestructura</td>
+<td>Preparar plan detallado de cutover y rollback</td>
+<td>Mitigar</td>
+<td>Ejecutar simulacros completos, estrategia blue-green, checklist minuto a minuto y ventana de baja demanda</td>
+<td>Retraso menor en algunos servicios no criticos</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R2</td>
+<td>Conversion y traslado de datos bancarios historicos y vigentes</td>
+<td>Perdida, corrupcion o inconsistencia de datos</td>
+<td>Mapeo incorrecto, ETL defectuoso y conciliacion insuficiente</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Datos</td>
+<td>Integridad de datos y calidad del servicio</td>
+<td>Directo</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>15</td>
+<td class="alta">Alta</td>
+<td>Arquitecto de Datos</td>
+<td>Equipo de Datos / DBA</td>
+<td>Respaldos completos y validacion de integridad</td>
+<td>Mitigar</td>
+<td>Migracion piloto, conciliacion cuenta a cuenta, doble validacion de saldos y hash de integridad</td>
+<td>Diferencias menores en datos no criticos</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R3</td>
+<td>Adaptacion del sistema a nuevas normas bancarias dentro del plazo</td>
+<td>Incumplimiento regulatorio antes de la fecha limite</td>
+<td>Interpretacion incompleta de requisitos normativos y retrasos en controles</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Regulatorio / Legal</td>
+<td>Cumplimiento y plazo</td>
+<td>Directo</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>15</td>
+<td class="alta">Alta</td>
+<td>Oficial de Cumplimiento</td>
+<td>PM + Compliance + Legal</td>
+<td>Revisiones normativas periodicas</td>
+<td>Evitar / Mitigar</td>
+<td>Crear matriz de cumplimiento, validaciones con auditoria, evidencias desde el inicio e hitos regulatorios obligatorios</td>
+<td>Observaciones menores del regulador</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R4</td>
+<td>Nuevo entorno basado en microservicios puede no rendir como se espera</td>
+<td>Bajo desempeno del nuevo core en produccion</td>
+<td>Arquitectura no optimizada, mala configuracion cloud y latencia entre servicios</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Tecnico / Rendimiento</td>
+<td>Disponibilidad y experiencia del cliente</td>
+<td>Directo</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>20</td>
+<td class="critica">Critica</td>
+<td>Arquitecto de Solucion</td>
+<td>SRE / DevOps / Arquitectura</td>
+<td>Probar rendimiento antes del go-live</td>
+<td>Mitigar</td>
+<td>Pruebas de carga, estres y picos; ajuste de autoscaling, cache, colas y observabilidad</td>
+<td>Degradacion temporal de modulos secundarios</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R5</td>
+<td>Dependencia de integraciones con ATM, banca movil, pagos y clearing</td>
+<td>Fallas en integraciones con sistemas internos y externos</td>
+<td>APIs incompletas, contratos mal definidos y dependencias legacy</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Integracion</td>
+<td>Operacion bancaria de punta a punta</td>
+<td>Directo</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>20</td>
+<td class="critica">Critica</td>
+<td>Lider de Integraciones</td>
+<td>Equipos de Canales / Middleware</td>
+<td>Inventario y pruebas de interfaces</td>
+<td>Mitigar</td>
+<td>Contract testing, pruebas E2E, mocks certificados, transicion por canal y fallback con legado</td>
+<td>Fallas parciales en canales de baja transaccionalidad</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R6</td>
+<td>Nueva infraestructura cloud expuesta a amenazas de seguridad</td>
+<td>Vulnerabilidades o brechas de ciberseguridad</td>
+<td>Configuracion insegura, exceso de permisos y secretos mal gestionados</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Seguridad</td>
+<td>Confidencialidad, integridad y cumplimiento</td>
+<td>Directo</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>15</td>
+<td class="alta">Alta</td>
+<td>CISO</td>
+<td>Seguridad + Cloud Team</td>
+<td>Aplicar controles de seguridad desde el diseno</td>
+<td>Mitigar</td>
+<td>IAM de minimo privilegio, cifrado, vault de secretos, SAST/DAST, pentest y monitoreo SIEM</td>
+<td>Riesgo residual de amenazas avanzadas persistentes</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R7</td>
+<td>El alcance tecnico del proyecto puede superar la capacidad del plazo</td>
+<td>Retraso del cronograma por complejidad no prevista</td>
+<td>Deuda tecnica legacy, dependencias ocultas y estimaciones optimistas</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Gestion / Cronograma</td>
+<td>Plazo y cumplimiento regulatorio</td>
+<td>Directo</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>4</td>
+<td>20</td>
+<td class="critica">Critica</td>
+<td>Project Manager</td>
+<td>PMO + Arquitectura + Lideres Tecnicos</td>
+<td>Seguimiento estricto del camino critico</td>
+<td>Mitigar</td>
+<td>Replanificar por olas, priorizar funciones regulatorias, buffers tecnicos y revision semanal de hitos</td>
+<td>Recorte de funcionalidades no esenciales</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R8</td>
+<td>El equipo actual puede no dominar cloud y microservicios</td>
+<td>Falta de experiencia tecnica del equipo</td>
+<td>Conocimiento centrado en sistemas on-premise y monoliticos</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Recursos Humanos / Tecnico</td>
+<td>Calidad tecnica y cronograma</td>
+<td>Indirecto</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>12</td>
+<td class="alta">Alta</td>
+<td>Gerente del Proyecto</td>
+<td>RRHH + Arquitectura + Lider Tecnico</td>
+<td>Formacion temprana del equipo</td>
+<td>Mitigar</td>
+<td>Capacitacion intensiva, coaching, acompanamiento externo y revisiones de arquitectura</td>
+<td>Curva de aprendizaje mas prolongada de lo esperado</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R9</td>
+<td>En caso de falla, el retorno al sistema anterior puede no ser viable</td>
+<td>Fallo del plan de rollback</td>
+<td>Cambios irreversibles, datos ya transformados y rollback no ensayado</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Operacional / Continuidad</td>
+<td>Continuidad y disponibilidad</td>
+<td>Directo</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>5</td>
+<td>15</td>
+<td class="alta">Alta</td>
+<td>Lider de Migracion</td>
+<td>Infraestructura + DBA + Operaciones</td>
+<td>Disenar reversa desde el inicio</td>
+<td>Mitigar</td>
+<td>Definir criterios de abort, backup consistente, rollback ensayado y scripts reversibles</td>
+<td>Recuperacion mas lenta que la prevista</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R10</td>
+<td>Cambios en procesos y herramientas pueden generar resistencia interna</td>
+<td>Resistencia al cambio de usuarios y areas operativas</td>
+<td>Comunicacion insuficiente, temor al cambio y poca capacitacion</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Organizacional</td>
+<td>Adopcion y operacion estable</td>
+<td>Indirecto</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>4</td>
+<td>12</td>
+<td class="alta">Alta</td>
+<td>Lider de Cambio</td>
+<td>RRHH + Operaciones + PM</td>
+<td>Plan de cambio organizacional</td>
+<td>Mitigar</td>
+<td>Comunicacion por fases, capacitaciones, manuales y soporte reforzado durante salida en vivo</td>
+<td>Mayor volumen de incidencias de usuario</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R11</td>
+<td>El uso de servicios cloud puede elevar el gasto operacional</td>
+<td>Costos de nube superiores al presupuesto</td>
+<td>Sobredimensionamiento, mala optimizacion y consumo no controlado</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Financiero</td>
+<td>Presupuesto</td>
+<td>Indirecto</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>5</td>
+<td>3</td>
+<td>15</td>
+<td class="alta">Alta</td>
+<td>Cloud Lead</td>
+<td>Finanzas TI + DevOps</td>
+<td>Controles de costo desde el inicio</td>
+<td>Mitigar</td>
+<td>FinOps, etiquetado, alarmas de consumo, rightsizing y revision mensual de gasto</td>
+<td>Ajustes presupuestarios adicionales</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R12</td>
+<td>Dependencia tecnologica fuerte de proveedor cloud y terceros</td>
+<td>Lock-in tecnologico o incumplimiento de terceros</td>
+<td>Uso excesivo de servicios propietarios y SLAs debiles</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Proveedores / Estrategico</td>
+<td>Continuidad, costos y flexibilidad</td>
+<td>Indirecto</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>8</td>
+<td class="media">Media</td>
+<td>Gerente de Proveedores</td>
+<td>Compras + Arquitectura</td>
+<td>Evaluacion contractual y tecnica de proveedores</td>
+<td>Mitigar / Transferir</td>
+<td>Asegurar SLAs, diseno portable cuando sea posible, multi-zona y plan alternativo</td>
+<td>Dependencia parcial inevitable del proveedor principal</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R13</td>
+<td>Las pruebas podrian no reflejar el comportamiento real de produccion</td>
+<td>Ambientes de prueba no representativos</td>
+<td>Infraestructura reducida, datos sinteticos insuficientes y diferencias topologicas</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Calidad / Tecnico</td>
+<td>Calidad, disponibilidad y cronograma</td>
+<td>Directo</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>20</td>
+<td class="critica">Critica</td>
+<td>QA Lead</td>
+<td>QA + Infraestructura + Arquitectura</td>
+<td>Validar paridad con produccion</td>
+<td>Mitigar</td>
+<td>Crear ambiente espejo, anonimizar datos reales, pruebas de volumen y pruebas integrales con topologia similar</td>
+<td>Defectos no detectados en escenarios extremos</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R14</td>
+<td>Microservicios distribuidos dificultan seguimiento de incidentes</td>
+<td>Monitoreo y trazabilidad insuficientes</td>
+<td>Observabilidad no disenada desde el principio</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Operacional / Tecnico</td>
+<td>Soporte, disponibilidad y calidad</td>
+<td>Directo</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>15</td>
+<td class="alta">Alta</td>
+<td>SRE Lead</td>
+<td>SRE + DevOps + Desarrollo</td>
+<td>Disenar observabilidad como requisito</td>
+<td>Mitigar</td>
+<td>Logging centralizado, metricas, trazas distribuidas, alertas proactivas y tableros operativos</td>
+<td>Mayor tiempo medio de diagnostico</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R15</td>
+<td>Auditorias internas o externas pueden detectar deficiencias graves</td>
+<td>Hallazgos severos de auditoria</td>
+<td>Evidencias incompletas y controles no documentados</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Auditoria / Cumplimiento</td>
+<td>Cumplimiento y reputacion</td>
+<td>Indirecto</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>10</td>
+<td class="media">Media</td>
+<td>Auditoria Interna</td>
+<td>Compliance + PM + Seguridad</td>
+<td>Revisiones previas de control</td>
+<td>Mitigar</td>
+<td>Auditoria preventiva, repositorio de evidencias, duenos por control y seguimiento de hallazgos</td>
+<td>Observaciones menores pendientes de cierre</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>R16</td>
+<td>Alta carga operativa durante la salida en vivo y estabilizacion</td>
+<td>Sobrecarga operativa post go-live</td>
+<td>Volumen alto de incidencias, soporte insuficiente y falta de runbooks</td>
+<td>2026-05-09</td>
+<td>Amenaza</td>
+<td>Operacional</td>
+<td>Estabilidad del servicio y atencion al cliente</td>
+<td>Directo</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+<td>20</td>
+<td class="critica">Critica</td>
+<td>Gerente de Operaciones</td>
+<td>Mesa de Ayuda + SRE + Soporte Apps</td>
+<td>Reforzar operacion de estabilizacion</td>
+<td>Mitigar</td>
+<td>War room 24/7, escalamiento definido, soporte ampliado, manuales y monitoreo intensivo</td>
+<td>Fatiga del equipo y tiempos de respuesta mayores</td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody></table></div>
+</body></html>
